@@ -25,8 +25,8 @@ public static class Simulador01CriaTabelas
       []
     );
 
-    var index = "create index idx_clients_embedding on sim01.clientes using hnsw (embedding vector_l2_ops) with(m=24, ef_construction=48);";
-    //var index = "create index idx_clients_embedding on sim01.clientes using ivfflat (embedding vector_l2_ops) with(lists=30000);";
+    //var index = "create index idx_clients_embedding on sim01.clientes using hnsw (embedding vector_l2_ops) with(m=24, ef_construction=48);";
+    var index = "create index idx_clients_embedding on sim01.clientes using ivfflat (embedding vector_l2_ops) with(lists=30000);";
 
     await db.ExecuteQuery(index, []);
 

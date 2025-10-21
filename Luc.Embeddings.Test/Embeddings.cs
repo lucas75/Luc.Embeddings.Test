@@ -2,7 +2,7 @@ namespace Luc.Embeddings.Test;
 
 public class Embeddings
 {
-  public static int Dimension { get; } = 256;
+  public static int Dimension { get; } = 128;
 
   /// <summary>
   /// Generate a random embedding vector

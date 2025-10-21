@@ -12,21 +12,21 @@ public static class Simulador01CriaTabelas
 
     // cria uma tabela com coluna cpf, vetor 
     await db.ExecuteQuery(
-      """
+      $"""
       drop schema if exists sim01 cascade;
       
       create schema sim01;
       
       create table sim01.clientes (
         id uuid not null primary key,
-        embedding vector(256) not null
+        embedding vector({Embeddings.Dimension}) not null
       );
       """,
       []
     );
 
-    //var index = "create index idx_clients_embedding on sim01.clientes using hnsw (embedding vector_l2_ops) with(m=24, ef_construction=48);";
-    var index = "create index idx_clients_embedding on sim01.clientes using ivfflat (embedding vector_l2_ops) with(lists=30000);";
+    var index = "create index idx_clients_embedding on sim01.clientes using hnsw (embedding vector_l2_ops) with(m=24, ef_construction=48);";
+    //var index = "create index idx_clients_embedding on sim01.clientes using ivfflat (embedding vector_l2_ops) with(lists=30000);";
 
     await db.ExecuteQuery(index, []);
 
